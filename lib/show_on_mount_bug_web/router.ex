@@ -1,5 +1,6 @@
 defmodule ShowOnMountBugWeb.Router do
   use ShowOnMountBugWeb, :router
+  alias ShowOnMountBugWeb.UserMounter
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -18,6 +19,10 @@ defmodule ShowOnMountBugWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    live_session :ls, on_mount: [{UserMounter, :mount}] do
+      live "/my_live_view", MyLive, :show
+    end
   end
 
   # Other scopes may use custom stacks.

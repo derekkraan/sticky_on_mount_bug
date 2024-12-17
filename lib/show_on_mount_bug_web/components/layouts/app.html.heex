@@ -29,4 +29,5 @@
     <.flash_group flash={@flash} />
     {@inner_content}
   </div>
+  {live_render(@socket, ShowOnMountBugWeb.MyStickyLive, id: "sticky_live_view", sticky: true)}
 </main>
